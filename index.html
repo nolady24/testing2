@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang='en'>
   <head>
@@ -57,9 +58,23 @@
             </p>
 
             <br />
-           
+            <h4>Custom filters and views</h4>
+            <p>Take a look at the <a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples'>wiki</a> to see how to add your own custom filters and views like:</p>
+            <div class='row'>
               <div class='col-md-6'>
-                
+                <ul>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-checkboxes'>Checkboxes</a></li>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-radiobuttons'>Radio buttons</a></li>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-drop-down-lists'>Drop down lists</a></li>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-textsearches'>Text searches</a></li>
+                </ul>
+              </div>
+              <div class='col-md-6'>
+                <ul>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-sliders'>Sliders</a></li>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-date-sliders'>Date sliders</a></li>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/List-search-results'>Results lists</a></li>
+                </ul>
               </div>
             </div>
             <br />
@@ -87,6 +102,7 @@
         </p>
         </div>
       </div>
+    </div>
 
     <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="js/jquery.address.js"></script>
@@ -107,17 +123,14 @@
             fusionTableId:      "15EhnJxPFnOoxZb576FCNMxEPTuB9V5hXnyPBq4EG",
             googleApiKey:       "AIzaSyD5qqLZ3VVSCHrLyCc11xw2prnnnEOSv8U",
             locationColumn:     "shape",
-            defaultZoom: 1,
             map_center:         [49.142211, -102.981366],
             locationScope:      ""
           });
-
           var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search_address'));
       
           $(':checkbox').click(function(){
             myMap.doSearch();
           });
-
           $(':radio').click(function(){
             myMap.doSearch();
           });
