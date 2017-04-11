@@ -44,17 +44,6 @@
             <p>
               <input class='form-control' id='search_address' placeholder='Enter an address or an intersection' type='text' />
             </p>
-            <p>
-              <label>
-                within
-                <select id='search_radius'>
-                  <option value='8046'>5 miles</option>
-                  <option value='24140'>15 miles</option>
-                  <option value='48280'>30 miles</option>
-                  <option value='88514'>55 miles</option>
-                </select>
-              </label>
-            </p>
             <br />
             <h4>Custom filters and views</h4>
             <br />
@@ -103,9 +92,9 @@
             googleApiKey:       "AIzaSyBFVwS9ZOLhshCgEnocrtIbR3x2GGhgLME",
             locationColumn:     "shape",
             map_center:         [49.142211, -102.981366],
-            searchRadius:       8046,
+            searchRadius:       321869,
             defaultZoom:        3,
-            addrMarkerImage:    'images/blue-pushpin.png',
+            addrMarkerImage:    'images/arrow.png',
             locationScope:      ""
           });
           var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search_address'));
