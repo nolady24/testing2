@@ -298,6 +298,61 @@
         });
         $("#result_box").fadeIn();
     };
+ MapsLib.prototype.getList = function(whereClause) {
+        var self = this;
+        var selectColumns = "name, slug, hidden, managed_by'";
+
+        self.query({
+            select: selectColumns,
+            where: whereClause,
+            orderBy: 'Name'
+        }, function (json) {
+            self.displayList(json);
+        });
+    }
+
+    MapsLib.prototype.displayList = function(json) {
+        var self = this;
+        
+        var data = json['rows'];
+        var template = '';
+
+        var results = $('#results_list');
+        results.hide().empty(); //hide the existing list and empty it out first
+
+        if (data == null) {
+            //clear results list
+            results.append("<tr><td colspan='6'>No results found</td></tr>");
+        }
+        else {
+            for (var row in data) {
+                template = "\
+                  <tr>\
+                      <td><span class='filter-box filter-" + type_color + "'></span></td>\
+                      <td><strong>" + data[row][0] + "</strong><br /><small>" + data[row][2] + "<br />" + data[row][3] + "</small></td>\
+                      <td>" + data[row][1] + "</td>\
+                      <td>";
+
+                if (data[row][4] != "") 
+                    template += "<b>Phone:</b> " + data[row][4] + "<br>";
+                if (data[row][5] != "") 
+                    template += "<b>Phone secondary:</b> " + data[row][5] + "<br>";
+                if (data[row][6] != "") 
+                    template += "<b>Fax:</b> " + data[row][6] + "<br>";
+                if (data[row][7] != "") 
+                    template += "<b>Web:</b> <a href='https://www.varagesale.com/dashboard/communities/" + data[row][2] + "' target='_blank'>" + data[row][7] + "</a><br>";
+                if (data[row][8] != "") 
+                    template += "<b>Email:</b> <a href='mailto:" + data[row][8] + "' target='_blank'>" + data[row][8] + "</a><br>";
+ 
+                template += "\
+                      </td>\
+                      <td>" + data[row][9] + "</td>\
+                  </tr>";
+                results.append(template);
+            }
+        }
+        results.fadeIn();
+    }
 
     MapsLib.prototype.addCommas = function (nStr) {
         nStr += '';
