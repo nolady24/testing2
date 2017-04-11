@@ -119,18 +119,18 @@
                     $.address.parameter('radius', encodeURIComponent(self.searchRadius));
                     map.setCenter(self.currentPinpoint);
                     // set zoom level based on search radius
-                    if (self.searchRadius >= 1610000) map.setZoom(5); // 1,000 miles
-                    else if (self.searchRadius >= 805000) map.setZoom(5); // 500 miles
-                    else if (self.searchRadius >= 402500) map.setZoom(5); // 250 miles
-                    else if (self.searchRadius >= 161000) map.setZoom(5); // 100 miles
-                    else if (self.searchRadius >= 80500) map.setZoom(5); // 100 miles
-                    else if (self.searchRadius >= 40250) map.setZoom(5); // 100 miles
-                    else if (self.searchRadius >= 16100) map.setZoom(5); // 10 miles
-                    else if (self.searchRadius >= 8050) map.setZoom(5); // 5 miles
-                    else if (self.searchRadius >= 3220) map.setZoom(5); // 2 miles
-                    else if (self.searchRadius >= 1610) map.setZoom(5); // 1 mile
-                    else if (self.searchRadius >= 805) map.setZoom(5); // 1/2 mile
-                    else if (self.searchRadius >= 400) map.setZoom(5); // 1/4 mile
+                    if (self.searchRadius >= 1610000) map.setZoom(11); // 1,000 miles
+                    else if (self.searchRadius >= 805000) map.setZoom(11); // 500 miles
+                    else if (self.searchRadius >= 402500) map.setZoom(11); // 250 miles
+                    else if (self.searchRadius >= 161000) map.setZoom(11); // 100 miles
+                    else if (self.searchRadius >= 80500) map.setZoom(11); // 100 miles
+                    else if (self.searchRadius >= 40250) map.setZoom(11); // 100 miles
+                    else if (self.searchRadius >= 16100) map.setZoom(11); // 10 miles
+                    else if (self.searchRadius >= 8050) map.setZoom(11); // 5 miles
+                    else if (self.searchRadius >= 3220) map.setZoom(11); // 2 miles
+                    else if (self.searchRadius >= 1610) map.setZoom(11); // 1 mile
+                    else if (self.searchRadius >= 805) map.setZoom(11); // 1/2 mile
+                    else if (self.searchRadius >= 400) map.setZoom(11); // 1/4 mile
                     else self.map.setZoom(5);
 
                     if (self.addrMarkerImage != '') {
