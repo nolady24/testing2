@@ -82,6 +82,7 @@
     //-----end of custom functions-----
 
     MapsLib.prototype.submitSearch = function (whereClause, map) {
+        self.getList(whereClause);
         var self = this;
         //get using all filters
         //NOTE: styleId and templateId are recently added attributes to load custom marker styles and info windows
@@ -279,6 +280,50 @@
             where: whereClause
         }, function (json) {
             self.displaySearchCount(json);
+            MapsLib.prototype.getList = function(whereClause) {
+    var self = this;
+    var selectColumns = 'name, slug,';
+
+    self.query({ 
+      select: selectColumns, 
+      where: whereClause 
+    }, function(response) { 
+      self.displayList(response);
+    });
+  },
+
+  MapsLib.prototype.displayList = function(json) {
+    var self = this;
+
+    var data = json['rows'];
+    var template = '';
+
+    var results = $('#results_list');
+    results.hide().empty(); //hide the existing list and empty it out first
+
+    if (data == null) {
+      //clear results list
+      results.append("<li><span class='lead'>No results found</span></li>");
+    }
+    else {
+      for (var row in data) {
+        template = "\
+          <div class='row-fluid item-list'>\
+            <div class='span12'>\
+              <strong>" + data[row][0] + "</strong>\
+              <br />\
+              " + data[row][1] + "\
+              <br />\
+              " + data[row][2] + "\
+              <br />\
+              " + data[row][3] + "\
+            </div>\
+          </div>";
+        results.append(template);
+      }
+    }
+    results.fadeIn();
+  },
         });
     };
 
@@ -399,7 +444,7 @@
                 var coords = new google.maps.LatLng(latitude, longitude);
                 self.map.panTo(coords);
                 self.addrFromLatLng(coords);
-                self.map.setZoom(14);
+                self.map.setZoom(9);
                 jQuery('#map_canvas').append('<div id="myposition"><i class="fontello-target"></i></div>');
                 setTimeout(function () {
                     jQuery('#myposition').remove();
